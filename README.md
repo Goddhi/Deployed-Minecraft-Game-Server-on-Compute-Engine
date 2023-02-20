@@ -1,5 +1,5 @@
 
-# Deploying Minecraft Game Server on Compute Engine
+# Deployed Minecraft Game Server on Compute Engine
 
 ### Overview
 - The Minecraft server software will run on a Compute Engine instance.
@@ -52,7 +52,7 @@ Network Interfaces : Click **default** to edit the interface
 External IPv4 address	: Create IP Address
 Name : mc-server-ip
 
-- click **Reserver**
+- click **Reserve**
 - click **Done**
 - click **Create**
 
@@ -66,4 +66,22 @@ Name : mc-server-ip
 
 The disk is attached to the instance, but it is not yet mounted or formatted.
 
+
+- For **mc-server**, click **SSH** to open a terminal and connect.
+
+- To create a directory that serves as the mount point for the data disk, run the following command:
+```
+sudo mkdir -p /home/minecraft
+```
+- check the attached disk using the follow command
+```
+lsblk
+```
+
+- To format the disk, run the following command:
+```
+sudo mkfs.ext4 -F -E lazy_itable_init=0,\
+lazy_journal_init=0,discard \
+/dev/disk/by-id/google-minecraft-disk
+```
 
