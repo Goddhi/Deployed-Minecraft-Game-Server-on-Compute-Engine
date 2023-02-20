@@ -85,3 +85,7 @@ lazy_journal_init=0,discard \
 /dev/disk/by-id/google-minecraft-disk
 ```
 
+- To mount the disk, run the following command:
+```
+sudo mount -o discard,defaults /dev/disk/by-id/google-minecraft-disk /home/minecraft
+```
