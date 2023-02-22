@@ -89,3 +89,59 @@ lazy_journal_init=0,discard \
 ```
 sudo mount -o discard,defaults /dev/disk/by-id/google-minecraft-disk /home/minecraft
 ```
+- Verify if the disk has been mounted using the command bellow
+```
+df -h
+```
+### Task 3. Install and run the application
+
+The Minecraft server runs on top of the Java Virtual Machine (JVM), so it requires the Java Runtime Environment (JRE) to run. Because the server doesn't need a graphical user interface, you use the headless version of the JRE. This reduces the JRE's resource usage on the machine, which helps ensure that the Minecraft server has enough room to expand its own resource usage if needed.
+
+##### Install the Java Runtime Environment (JRE) and the Minecraft server
+
+- In the SSH terminal for **mc-server**, to update the Debian repositories on the VM, run the following command:
+```
+sudo apt-get update
+```
+- After the repositories are updated, to install the headless JRE, run the following command:
+```
+sudo apt-get install -y default-jre-headless
+```
+- To navigate to the directory where the persistent disk is mounted, run the following command:
+```
+cd /home/minecraft
+```
+- To install wget, run the following command:
+```
+sudo apt-get install wget
+```
+- If prompted to continue, type **Y**.
+
+- To download the current Minecraft server JAR file (1.11.2 JAR), run the following command:
+```
+sudo wget https://launcher.mojang.com/v1/objects/d0d0fe2b1dc6ab4c65554cb734270872b72dadd6/server.jar
+```
+
+### Initialize the Minecraft server
+- To initialize the Minecraft server, run the following command:
+```
+sudo java -Xmx1024M -Xms1024M -jar server.jar nogui
+```
+**Note**: The Minecraft server won't run unless you accept the terms of the End User Licensing Agreement (EULA).
+
+- To see the files that were created in the first initialization of the Minecraft server, run the following command:
+```
+sudo ls -l
+```
+**Note**: You could edit the server.properties file to change the default behavior of the Minecraft server.
+
+- To edit the EULA, run the following connand
+```
+sudo nano eula.txt
+```
+- Change the last line of the file from eula=false to eula=true.
+- Press Ctrl+O, ENTER to save the file and then press Ctrl+X to exit nano.
+- **Note**: Don't try to restart the Minecraft server yet. You use a different technique in the next procedure..
+
+
+
