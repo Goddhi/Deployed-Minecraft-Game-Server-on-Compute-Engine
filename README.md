@@ -141,7 +141,7 @@ sudo nano eula.txt
 ```
 - Change the last line of the file from eula=false to eula=true.
 - Press Ctrl+O, ENTER to save the file and then press Ctrl+X to exit nano.
-- **Note**: Don't try to restart the Minecraft server yet. You use a different technique in the next procedure..
+- **Note**: Don't try to restart the Minecraft server yet. You use a different technique in the next procedure...
 
 
 
